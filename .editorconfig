@@ -13,6 +13,8 @@ tab_width = 4
 indent_size = 4
 indent_style = space
 
+max_line_length = 120
+
 [*.go]
 indent_style = tab
 
@@ -29,4 +31,3 @@ indent_style = tab
 
 [*.md]
 trim_trailing_whitespace = false
-

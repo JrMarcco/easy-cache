@@ -1,7 +1,13 @@
 *.iml
 *.log
-.idea
-log/
-target/
+*.lock
+*.out
+*.sum
 
 **/tmp/
+**/data/
+**/log/
+**/logs/
+
+.idea
+.vscode
