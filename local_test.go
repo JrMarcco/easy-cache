@@ -80,14 +80,13 @@ func TestLocalCache_cleanExpiredKey(t *testing.T) {
 	err = lc.Set(nil, "key_1", "val_new", 10*time.Second)
 	require.NoError(t, err)
 
-	val, err := lc.Get(context.Background(), "key_1")
-	assert.NoError(t, err)
-	assert.Equal(t, "val_new", val)
+	item, ok := lc.data["key_1"]
+	assert.True(t, ok)
+	assert.Equal(t, "val_new", item.val)
 
-	val, err = lc.Get(context.Background(), "key_2")
-	assert.Equal(t, err, errKeyNotFound)
+	_, ok = lc.data["key_2"]
+	assert.False(t, ok)
 
-	val, err = lc.Get(context.Background(), "key_3")
-	assert.Equal(t, err, errKeyNotFound)
-
+	_, ok = lc.data["key_3"]
+	assert.False(t, ok)
 }
